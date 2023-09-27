@@ -25,6 +25,40 @@ const App = () => {
     setIsLoggedIn(false);
   } , []);
 
+  let validroutes;
+
+  if(isLoggedIn){
+    validroutes=(
+      <Switch>
+        <Route path ="/" exact>
+          <Users />   
+        </Route>
+        <Route path="/:userid/locations">
+          <UserLocations/>
+        </Route>
+        <Route path="/locations/new" exact>
+          <NewLocation/>
+        </Route>
+        <Redirect to="/" />
+      </Switch>
+
+    );
+    
+  }
+  else{
+    validroutes=(
+      <Switch>
+        <Route path ="/" exact>
+          <Users />
+        </Route>
+        <Route path="/login" exact>  
+          <Login/>
+        </Route>
+        <Redirect to="/login" />
+      </Switch>
+    )
+  }
+
   return (
   <LoginContext.Provider value = {
     {
@@ -38,7 +72,8 @@ const App = () => {
     <MainNavigation/>
 
     <main>
-    <Switch>
+      {validroutes}
+    {/* <Switch>
 
     <Route path = "/" exact>
       <Users/>
@@ -58,7 +93,7 @@ const App = () => {
 
     <Redirect to = "/" />
 
-    </Switch>
+    </Switch> */}
     </main>
 
   </Router>
