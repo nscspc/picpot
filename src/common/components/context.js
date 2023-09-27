@@ -9,11 +9,11 @@ export const LoginContext = createContext({
     isLoggedIn:false,
     
     login: () => {
-
+        //defined in App.js , so they will be automatically valid everywhere.
     },
 
     logout: () => {
-
+        //defined in App.js , so they will be automatically valid everywhere.
     },
     
 });
