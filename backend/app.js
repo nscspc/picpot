@@ -19,17 +19,17 @@ app.use("/api/locations", location_route); //location route middleware custom  m
 //   return next(new MyError("Cannot find path", 404));
 // });
 
-// app.use((error, req, res, next) => {
-//   //error middleware custom made
-//   if (res.headerSent) {
-//     next(error);
-//   }
-//   res.status(error.code || 500);
-//   res.json({
-//     result: "fail",
-//     message: error.message || "Something bad happened",
-//   });
-// });
+app.use((error, req, res, next) => {
+  //error middleware custom made
+  if (res.headerSent) {
+    next(error);
+  }
+  res.status(error.code || 500);
+  res.json({
+    result: "fail",
+    message: error.message || "Something bad happened",
+  });
+});
 
 // mongoose
 // .connect("mongodb+srv://picpotadmin:6uMvqjpnrGcz4vgW@cluster0.rl7sh7f.mongodb.net/PicturePot?retryWrites=true&w=majority"
