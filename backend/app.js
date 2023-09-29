@@ -5,20 +5,19 @@ const express = require("express");
 const MyError = require("./models/error");
 const location_route = require("./routes/locations_route");
 
-// const user_route = require("./routes/users_route");
+const user_route = require("./routes/users_route");
 const app = express();
 // app.use(location_route);
 // app.use(cors());
 app.use(express.json()); //built in middle ware
 // app.use("/uploads/users",express.static(`${__dirname}\\uploads\\users`));
 app.use("/api/locations", location_route); //location route middleware custom  made
+app.use("/api/users", user_route); //user route middleware custom made
 
-// app.use("/api/users", user_route); //user route middleware custom made
-
-
-// app.use("*", (req, res, next) => {
-//   return next(new MyError("Cannot find path", 404));
-// });
+// to handle the issue that can occur when the path accessed by user that does not exists :-
+app.use("*", (req, res, next) => { // * refers to all the paths excluding the paths which are not defined above.
+  return next(new MyError("Cannot find path", 404));
+});
 
 app.use((error, req, res, next) => {
   //error middleware custom made
