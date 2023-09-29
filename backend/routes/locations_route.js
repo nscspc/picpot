@@ -25,6 +25,6 @@ location_router.post("/", locationController.createNewLocation);
 
 // location_router.post("/",picUpload.single("pic"), locationController.createNewLocation);
 
-// location_router.delete("/:locid", locationController.deleteLocation);
+location_router.delete("/:locid", locationController.deleteLocation);
 
 module.exports = location_router;
