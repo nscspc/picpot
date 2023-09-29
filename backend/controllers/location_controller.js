@@ -47,7 +47,7 @@ exports.getLocationByLocId = (req , res , next) => {
 
 exports.getLocationByUserId = (req , res , next) => {
     const uid = req.params.uid; // to get uid from url
-    const location = USER_LOCATIONS.find(loc => {
+    const location = USER_LOCATIONS.filter(loc => { // find is used to get one value and filter is used to get multiple values.
         return loc.userid == uid    
     });
 
@@ -68,6 +68,14 @@ exports.createNewLocation = (req , res , next) => {
     USER_LOCATIONS.push(newlocation);
 
     res.status(201).json({result:"success",message:newlocation});
+}
+
+exports.deleteLocation = (req , res , next) => {
+  const locid = req.params.locid;
+  USER_LOCATIONS = USER_LOCATIONS.filter((loc) => {
+    loc.id !== locid
+  });
+  res.status(201).json({result:"success",message:"location deleted"});
 }
 
 
