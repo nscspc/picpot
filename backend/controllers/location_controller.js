@@ -1,5 +1,5 @@
 const MyError = require("../models/error");
-// const Location = require("../models/location");
+const Location = require("../models/location");
 let USER_LOCATIONS = [
   {
     id: "loc1",
@@ -62,13 +62,13 @@ exports.getLocationByUserId = (req , res , next) => {
     }); 
 }
 
-exports.createNewLocation = (req , res , next) => {
-    const {title,desc,address,userid} = req.body;
-    const newlocation = {title,desc,address,userid};
-    USER_LOCATIONS.push(newlocation);
+// exports.createNewLocation = (req , res , next) => {
+//     const {title,desc,address,userid} = req.body;
+//     const newlocation = {title,desc,address,userid};
+//     USER_LOCATIONS.push(newlocation);
 
-    res.status(201).json({result:"success",message:newlocation});
-}
+//     res.status(201).json({result:"success",message:newlocation});
+// }
 
 exports.deleteLocation = (req , res , next) => {
   const locid = req.params.locid;
@@ -114,28 +114,28 @@ exports.deleteLocation = (req , res , next) => {
 //   res.status(200).json({ result: "success", message: locations });
 // };
 
-// exports.createNewLocation = async(req, res, next) => {
-//   const { title, desc, address, userid } = req.body;
-//   const newlocation=new Location({
-//     title,
-//     desc,
-//     pic :req.file.path,
-//     address,
-//     userid,
+exports.createNewLocation = async(req, res, next) => {
+  
+  const { title, desc, address, userid } = req.body;
+  
+  const newlocation=new Location({
+    title,
+    desc,
+    pic :"https://picsum.photos/200",//req.file.path,
+    address,
+    userid,
+  });
 
-//   });
-//   try{
+  try{
+    await newlocation.save();
+  }catch(err){
+    return next(new MyError("Database error: Cannot add location: "+ err, 500));
+  }
+  // const newlocation = { title, desc, address, userid };
+  // USER_LOCATIONS.push(newlocation);
 
-//     await newlocation.save();
-    
-//   }catch(err){
-//     return next(new MyError("Database error: Cannot add location: "+ err, 500));
-//   }
-//   // const newlocation = { title, desc, address, userid };
-//   // USER_LOCATIONS.push(newlocation);
-
-//   res.status(201).json({ result: "success", message: newlocation });
-// };
+  res.status(201).json({ result: "success", message: newlocation });
+};
 
 // exports.deleteLocation = async(req, res, next) => {
 //   const locid = req.params.locid; // get locid from the url 

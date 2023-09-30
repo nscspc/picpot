@@ -1,5 +1,5 @@
 const express = require("express");
-// const mongoose=require("mongoose");
+const mongoose=require("mongoose");
 // const cors = require("cors");
 // const MyError = require("./model/error");
 const MyError = require("./models/error");
@@ -31,19 +31,20 @@ app.use((error, req, res, next) => {
   });
 });
 
-// mongoose
-// .connect("mongodb+srv://picpotadmin:6uMvqjpnrGcz4vgW@cluster0.rl7sh7f.mongodb.net/PicturePot?retryWrites=true&w=majority"
-// ).then(()=>{
+mongoose
+.connect("mongodb+srv://saininaveen933:naveen1234@cluster0.ulfxtwl.mongodb.net/picpot?retryWrites=true&w=majority"
+// mongodb+srv://picpotadmin:6uMvqjpnrGcz4vgW@cluster0.rl7sh7f.mongodb.net/PicturePot?retryWrites=true&w=majority"
+).then(()=>{ // so the server will run only when the database is connected.
   app.listen(5000, () => {
     console.log("server running @ 5000");
   });
-// })
+})
+.catch((error)=>{
+  console.log(error);
+});
 
-// .catch((error)=>{
 
-//   console.log(error);
-// });
-
+// mongodb+srv://saininaveen933:naveen1234@cluster0.ulfxtwl.mongodb.net/picpot?retryWrites=true&w=majority
 
 
  
