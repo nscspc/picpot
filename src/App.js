@@ -15,14 +15,18 @@ const App = () => {
   //   </div>
   // );
 
+  const [userID, setUserID]=useState(null);
+
   const [isLoggedIn , setIsLoggedIn] = useState(false); // initially the state of login is false.
   
-  const login = useCallback(() => { // useCallback is also a hook , when a function is called then the function is executed , but while using useCallback hook that function will not execute , instead the previous result of the function will kept stored in cache memory , and it will retrieve that if the previous value is not changed. And where ever we need the login info we need to define these method again and again.
+  const login = useCallback((uid) => { // useCallback is also a hook , when a function is called then the function is executed , but while using useCallback hook that function will not execute , instead the previous result of the function will kept stored in cache memory , and it will retrieve that if the previous value is not changed. And where ever we need the login info we need to define these method again and again.
+    setUserID(uid);
     setIsLoggedIn(true);
   } , []); // We have to pass null array :- [] , to remove this warning or issue -> "React Hook useCallback does nothing when called with only one argument. Did you forget to pass an array of dependencies?".
 
   const logout = useCallback(() => {
     setIsLoggedIn(false);
+    setUserID(null);
   } , []);
 
   let validroutes;
@@ -63,6 +67,7 @@ const App = () => {
   <LoginContext.Provider value = {
     {
       isLoggedIn : isLoggedIn,
+      userID: userID,
       login : login,
       logout : logout,
     }
