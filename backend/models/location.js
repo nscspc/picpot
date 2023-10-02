@@ -20,9 +20,9 @@ const locationSchema = new Schema({
         required: true
     },
     userid : {
-        type: String,//mongoose.Types.ObjectId, 
+        type:mongoose.Types.ObjectId, 
         required: true, 
-        // Ref:"User" 
+        Ref:"User" 
     },
 });
 
