@@ -3,15 +3,45 @@ import { LoginContext } from "../../common/components/context";
 import "./Login.css";
 const Login =()=>{
     const loggedin= useContext(LoginContext);
+    const [error, setError]=useState(null);
     const [newlogin, setNewlogin]=useState({
         email:"",
         password:""
     })
-    const submitHandler=(event)=>{
+    const submitHandler= async (event)=>{
         event.preventDefault();
-        loggedin.login();
-        console.log("login page:",newlogin);
+        setError(null);
+        // loggedin.login();
+        // console.log("login page:",newlogin);
+        try{
+            const response =await fetch("http://localhost:5000/api/users/login",
+                {
+                    method: "POST",
+                    headers:{
+                        "Content-type":"application/json",
+                    },
+                    body: JSON.stringify({
+                        email: newlogin.email,
+                        password: newlogin.password,
+                    }),
+                }
+            );
+
+            const responseData= await response.json();
+            console.log("login page :", responseData);
+            if(!response.ok){
+                throw new Error(responseData.message);
+            }
+            loggedin.login(responseData.message._id);
+        }
+        catch(err){
+            alert(err.message, ()=>{
+                setError(null);
+            });
+            setError(err.message);
+        }
     };
+    
     const changeHandler=(event)=>{
         const inputname=event.target.name;
         const newValue= event.target.value;
