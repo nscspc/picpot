@@ -5,6 +5,7 @@ import {BrowserRouter as Router , Route , Redirect , Switch} from "react-router-
 import MainNavigation from "./common/components/Navigation/MainNavigation";
 import UserLocations from "./locations/pages/UserLocations";
 import Login from "./users/pages/Login";
+import Register from "./users/pages/Register";
 import { LoginContext } from "./common/components/context";
 
 const App = () => {
@@ -54,6 +55,12 @@ const App = () => {
       <Switch>
         <Route path ="/" exact>
           <Users />
+        </Route>
+        <Route path="/:userid/locations" exact>
+          <UserLocations />
+        </Route>
+        <Route path="/register" exact>  
+          <Register/>
         </Route>
         <Route path="/login" exact>  
           <Login/>

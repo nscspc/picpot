@@ -115,7 +115,7 @@ exports.createNewLocation = async(req, res, next) => {
   const newlocation=new Location({
     title,
     desc,
-    pic :"https://picsum.photos/200",//req.file.path,
+    pic :req.file.path,//"https://picsum.photos/200"
     address,
     userid,
   });

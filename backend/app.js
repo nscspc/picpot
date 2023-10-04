@@ -8,7 +8,8 @@ const app = express();
 // app.use(location_route);
 app.use(cors());
 app.use(express.json()); //built in middle ware
-// app.use("/uploads/users",express.static(`${__dirname}\\uploads\\users`));
+app.use("/uploads/users",express.static(`${__dirname}\\uploads\\users`)); // to show uploaded pics on web.
+app.use("/uploads/userpic",express.static(`${__dirname}\\uploads\\userpic`)); // to show uploaded pics on web.
 app.use("/api/locations", location_route); //location route middleware custom  made
 app.use("/api/users", user_route); //user route middleware custom made
 
@@ -33,8 +34,8 @@ mongoose
 .connect("mongodb+srv://saininaveen933:naveen1234@cluster0.ulfxtwl.mongodb.net/picpot?retryWrites=true&w=majority"
 // mongodb+srv://picpotadmin:6uMvqjpnrGcz4vgW@cluster0.rl7sh7f.mongodb.net/PicturePot?retryWrites=true&w=majority"
 ).then(()=>{ // so the server will run only when the database is connected.
-  app.listen(5000, () => {
-    console.log("server running @ 5000");
+  app.listen(4000, () => {
+    console.log("server running @ 4000");
   });
 })
 .catch((error)=>{

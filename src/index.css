@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
-
+@import './common/constants/color.css';
 *{
   box-sizing: border-box;
 }
@@ -12,7 +12,8 @@ html {
 
 body {
     margin: 0;
-    background: #461959;
+    background:var(--background-color);
+     /* #461959; */
 }
 
 .center {
@@ -24,9 +25,12 @@ body {
 
 
 .tring{
-    color:#AED8CC;
-    color:#CD6688;
-    color:#7A316F;
-    color:#461959 ;
+    color:var(--ligthbgColor);
+    color:var(--yellowColor);
+    /* #CD6688; */
+    color:var(--background-color);
+    /* #7A316F; */
+    color:var(--background-color);
+    /* #461959 ; */
 }
     

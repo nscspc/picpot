@@ -62,7 +62,13 @@ const NavLinks = (props) => {
             
             {!loggedin.isLoggedIn && (
             <li>
-                <NavLink to ="/login">Sign In/Up</NavLink>
+                <NavLink to ="/register">Sign Up</NavLink>
+            </li>
+            )}
+
+            {!loggedin.isLoggedIn && (
+            <li>
+                <NavLink to ="/login">Sign In</NavLink>
             </li>
             )}
             

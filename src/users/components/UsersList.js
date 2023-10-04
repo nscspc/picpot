@@ -31,6 +31,7 @@ const UsersList=(props)=>{
                     locationcount={user.locationsid.length}
                 />
             );
+            
         })}
     </ul>
  )

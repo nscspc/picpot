@@ -3,19 +3,20 @@ import {Link} from "react-router-dom"; // we will use link instead of anchor tag
 import "./UsersItem.css";
 
 const UserItem=(props)=>{
+    console.log(props.pic);
     return(
         <li className="useritem">
             <div className="useritem-content">
 
                 <Link to={`${props.id}/locations`}> {/*  ${props.id}/locations :- dynamic url (which changes). */}
                 <div className="useritem-pic">
-                    <img src={props.pic} alt={props.name}/>
+                    <img src={`http://localhost:4000/${props.pic}`} alt={props.name}/>
                 </div>
                 <div className="useritem-infor">
                     <h2>{props.name}</h2>
-                    <h3>{props.locationcount}
+                    {/* <h3>{props.locationcount}
                     {props.locationcount ===1 ? " location":" locations"}
-                    </h3>
+                    </h3> */}
                 </div>
                 </Link>
             </div>

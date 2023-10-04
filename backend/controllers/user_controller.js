@@ -84,7 +84,7 @@ exports.register = async(req, res, next) => {
     const newuser=new User({
         name,
         email,
-        pic:"https://picsum.photos/200",
+        pic:req.file.path,//"https://picsum.photos/200",
         password,
         locationsid:[]
     });

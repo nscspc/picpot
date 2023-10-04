@@ -4,7 +4,8 @@ const LocationsItem=(props)=>{
     return( <li className="locationitem">
         <div className="locationitem-content">
             <div className="locationitem-pic">
-                <img src={props.pic} alt ={props.title}/>
+                {/* <img src={props.pic} alt ={props.title}/> */}
+                <img src={`http://localhost:4000/${props.pic}`} alt ={props.title}/>
             </div>     
             <div className="locationitem-infor">
                 <h2>{props.title}</h2>

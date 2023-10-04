@@ -7,14 +7,14 @@ const Login =()=>{
     const [newlogin, setNewlogin]=useState({
         email:"",
         password:""
-    })
+    });
     const submitHandler= async (event)=>{
         event.preventDefault();
         setError(null);
         // loggedin.login();
         // console.log("login page:",newlogin);
         try{
-            const response =await fetch("http://localhost:5000/api/users/login",
+            const response =await fetch("http://localhost:4000/api/users/login",
                 {
                     method: "POST",
                     headers:{
@@ -61,6 +61,8 @@ const Login =()=>{
             }
         });
     };
+
+    console.log(error);
 
     return (
         <form className ="login-form" onSubmit={submitHandler}>

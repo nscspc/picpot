@@ -13,17 +13,22 @@
     height: 40%;
     text-decoration: none;
     padding:1rem;
+    /* border-color: var(--yellowColor); */
+    /* border-width: 2px; */
+    /* border-style: solid; */
     border-radius:10px;
-    color: white;
-    box-shadow:0 2px 8px rgba(0, 0, 0, 0.30);
-    background: #292929;
+    /* color: var(--nav-color); */
+    box-shadow:0 3px 15px var(--nav-color);
+     /* rgba(0, 0, 0, 0.30); */
+    background: var(--nav-color);/*#292929;*/
     transition: background .2s ease-out; 
 }
 /* to delay the hovering effect transition is used above */
   
 .useritem a:hover,
 .useritem a:active {
-    background: #CD6688;    
+    background: var(--lightbgColor)
+     /* #CD6688;     */
 }
   
 .useritem-content {
@@ -34,20 +39,27 @@
     width: 4rem;
     height: 4rem;
     margin-right: 1rem;
+    border-radius:100%;
+    box-shadow:0 3px 15px var(--nav-color);
+    background-color: var(--lightbgColor);
 }
   
 .useritem-infor h2 {
     font-size: 1.5rem;
     margin: 0 0 0.5rem 0;
     font-weight: bold;
-    color: #CD6688;
+    color: var(--background-color);
 }
   
 .useritem:hover h2,
+/* {
+    color: var(--background-color);
+}*/
+
 .useritem:active h2,
 .useritem:hover h3,
 .useritem:active h3 {
-    color: #292929;
+    color: var(--nav-color);
 }
   
 .useritem-infor h3 {
@@ -68,5 +80,5 @@
     border-radius: 50%;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: fill;
 }

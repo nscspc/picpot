@@ -37,12 +37,15 @@ const Users =()=>{
     useEffect(()=> {
         const sendRequest= async()=>{
             try{
-                const response = await fetch("http://localhost:5000/api/users");
+                const response = await fetch("http://localhost:4000/api/users");
+                
                 const responseData= await response.json();
+                // console.log(responseData.message);
                 if(!response.ok){
                     throw new Error(responseData.message);
                 }
                 setSavedUsers(responseData.message);
+                
             }catch(err){
                 alert(err.message, ()=>{
                     setError(null);
@@ -52,6 +55,8 @@ const Users =()=>{
         };
         sendRequest();
     }, []);
+
+    console.log(error);
 
     return(
         <React.Fragment>
